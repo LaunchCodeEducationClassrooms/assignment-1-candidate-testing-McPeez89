@@ -76,7 +76,7 @@ if(candidateAnswers[4].toUpperCase() === correctAnswers[4].toUpperCase()) {
     questionsCorrect += 1
   } 
 
-  /*// TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
 
 let quizLength = questions.length
