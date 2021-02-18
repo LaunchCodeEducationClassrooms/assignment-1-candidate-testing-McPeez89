@@ -3,15 +3,14 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = '';
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question = "Who was the first American woman in space? ";
+let question = 'Who was the first American woman in space? ';
 let correctAnswer = "Sally Ride";
-let candidateAnswer;
-let questions = ["1) Who was the first American woman in space? ", "2) True or false: 5000 meters = 5 kilometers. ", "3) (5+3)/2*10=? ", "4) Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "5) What is the minimum crew size for the ISS? "];
-let correctAnswers = ["Sally Ride", "True", "40", "Trajectory", "3"];
+let candidateAnswer = '';
+let questions = [ 'Who was the first American woman in space? ',  'True or false: 5 kilometer == 5000 meters? ',  '(5 + 3)/2 * 10 = ? ', "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", 'What is the minimum crew size for the ISS? '];
+let correctAnswers = ['Sally Ride', 'true', '40', 'Trajectory', '3'];
 let candidateAnswers = [];
-let questionsCorrect = 0;
 
 
 
@@ -20,7 +19,6 @@ function askForName() {
   /*// TODO 1.1b: Ask for candidate's name //*/
 candidateName = input.question('What is your name? ');
   
-console.log(`Candidate Name: ${candidateName}\n`);
 }
 
 
@@ -49,54 +47,57 @@ while (i < questions.length) {
 
 
 
+let questionsCorrect = 0;
+
 function gradeQuiz(candidateAnswers) {
 
-  if(candidateAnswers[0].toUpperCase() === correctAnswers[0].toUpperCase()) {
+  if(candidateAnswers[0].toLowerCase() === correctAnswers[0].toLowerCase()) {
 
-    questionsCorrect += 1
+    questionsCorrect += 1;
   }
 
- if(candidateAnswers[1].toUpperCase() === correctAnswers[1].toUpperCase()) {
+ if(candidateAnswers[1].toLowerCase() === correctAnswers[1].toLowerCase()) {
 
-    questionsCorrect += 1
+    questionsCorrect += 1;
   }
 
- if(candidateAnswers[2].toUpperCase() === correctAnswers[2].toUpperCase()) {
+ if(candidateAnswers[2].toLowerCase() === correctAnswers[2].toLowerCase()) {
 
-    questionsCorrect += 1
+    questionsCorrect += 1;
   } 
 
-if(candidateAnswers[3].toUpperCase() === correctAnswers[3].toUpperCase()) {
+if(candidateAnswers[3].toLowerCase() === correctAnswers[3].toLowerCase()) {
 
-    questionsCorrect += 1
+    questionsCorrect += 1;
   }
 
-if(candidateAnswers[4].toUpperCase() === correctAnswers[4].toUpperCase()) {
+if(candidateAnswers[4].toLowerCase() === correctAnswers[4].toLowerCase()) {
 
-    questionsCorrect += 1
+    questionsCorrect += 1;
   } 
+
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
 
-let quizLength = questions.length
-let grade = ((questionsCorrect) / (quizLength))*100
-  
-  if(grade >= 80){
-    console.log(`>>> Overall Grade: ${grade}% (${questionsCorrect} of ${questions.length} responses correct) <<<\n>>> Status: PASSED <<< `)
-  }else{
-    console.log(`>>> Overall Grade: ${grade}% (${questionsCorrect} of ${questions.length} responses correct) <<<\n>>> Status: FAILED <<< `)
+let grade = (questionsCorrect / questions.length) * 100
+  console.log(`>>>Overall Grade: ${grade}% (${questionsCorrect} of ${questions.length} responses correct)<<<`);
 
-  }
-  
-  return grade;
+if (grade >= 80){
+    console.log(`>>>Status: Passed<<<`);
+} else {
+    console.log( `>>>Status: Failed<<<`);
+}
+ 
+return grade;
   
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
+  console.log(`Candidate Name: ${candidateName}\n`);
+
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
