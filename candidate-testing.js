@@ -37,7 +37,7 @@ while (i < questions.length) {
   console.log(`Your Answer: ${candidateAnswers[i]}`);
   console.log(`Correct Answer: ${correctAnswers[i]}\n`);
 
-  i++;
+    i++;
 
   }
 
